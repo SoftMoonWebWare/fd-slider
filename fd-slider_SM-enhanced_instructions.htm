@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name='description' content='SoftMoon-WebWare’s enhanced version of Frequency-Decoder’s JavaScript powered input type="range" solution for older browsers.' />
+<meta name='author' content='Joe Golembieski, SoftMoon-WebWare' />
+<meta name='copyright' content='Copyright © 2010, 2012, 2013 Joe Golembieski, SoftMoon-WebWare' />
+<meta name="generator" content="tsWebEditor (tswebeditor.net.tc - www.tswebeditor.tk)" />
+<meta name="generator" content="tsWebEditor (tswebeditor.tigris.org)" />
+<title>&lt;input type="range"&gt; solution for older browsers</title>
+<script type='text/javascript' src="http://SoftMoon-WebWare.com/JS_toolbucket/freqdec-fd-slider-01084d3/js/fd-slider_SM-enhanced.js"></script>
+<link rel="stylesheet" type="text/css" media="screen, projection" href="http://SoftMoon-WebWare.com/JS_toolbucket/freqdec-fd-slider-01084d3/css/fd-slider_SM-enhanced-compatible.css" />
+<style type="text/css">
+body, div, h1, h2, h4, img, ul, li, menu, a, samp, pre {
+	margin: 0;
+	padding: 0; }
+body {
+	min-width: 800px;
+	font-family: Times, "Times New Roman", serif;
+	color: #000000;
+	background: #FFDEAD url(http://SoftMoon-WebWare.com/images/SoftMoon.repeat-y.png) repeat-y; }
+#top {
+	position: relative;
+	height: 700px;
+	min-height: 42em;
+	background: #FFDEAD url(http://SoftMoon-WebWare.com/images/SoftMoon.repeat-x.png) repeat-x; }
+#top, #content, footer {
+	min-width: 62em;
+	opacity: .62;
+	-moz-opacity: .62;
+	filter: alpha(opacity=62); }
+#top h1:first-child {
+	font-size: 1.618em;
+	font-weight: bold;
+	font-family: "Cooper Black", serif;
+	padding: .618em 0 0 1em; }
+#top h1 span {
+	padding: 0 0 0 2.618em;
+	font-size: .764em }  /* ≈ Φ + ((1-Φ) - (1-Φ)*Φ) */
+#top h1:last-child {
+	position: absolute;
+	bottom: 17px;
+	left: 0px;
+	text-align: center;
+	width: 100%; }
+#top figure {
+	position: absolute;
+	top: 2.618em;
+	left: 1em; }
+#logo {
+	font-size: 1.618em; /*for alt text*/
+	font-weight: bold;
+	line-height: 150%; }
+#top figcaption {
+	font-size: 1.382em;
+	font-weight: bold;
+	text-align: center;
+	width: 27em; }
+#top figcaption span {
+	display: block;
+	font-style: oblique; }
+#top figcaption span em {
+	text-transform: uppercase;
+	font-weight: bold }
+#content {
+	min-width: 57em;
+	width: 100%;  /* fix MS and IE: crash 'n' trash  (yet another "hasLayout" bug?) */
+	background: #FFDEAD;
+	text-align: center; }
+#content p {
+	text-align: justify;
+	text-indent: -.618em;
+	font-size: 1.236em;
+	width: 27em;
+	margin: 0 auto 0 auto;
+	padding: 0 1em 1em 1em; }
+#content p:first-letter {
+	font-size: 1.618em;
+	font-weight: bold;
+	color: #000040; }
+#content samp, code {
+	white-space: nowrap;
+	text-align: left;
+	font-size: .854076em;
+	font-family: "consolas"; }
+#content .example {
+	width: 37em;
+	font-size: 1.236em;
+	text-align: left;
+	margin: 0 auto 0 auto; }
+p code {
+  display: inline-block;
+	margin-left: .618em; }
+.example code, .example samp {
+	display: block;
+	white-space: pre; }
+
+samp:last-child {
+	position: relative;
+	border: 2px solid lightblue;
+	height: 22em;
+	width: 42em; }
+input#loner2,
+label#foobits2 {
+	position: absolute; }
+samp > span.fd-slider,
+input#loner,
+label#foobits,
+input#loner2,
+label#foobits2 {
+	width: 9em;
+	height: 1em;
+	margin: 5em 1em;
+  transform: rotate(61.8deg);
+  -ms-transform: rotate(61.8deg);
+  -webkit-transform: rotate(61.8deg);
+  -moz-transform: rotate(61.8deg); }
+label#foobits,
+label#foobits2 {
+	display: block;
+	margin: 7em 1em 9em 1em; }
+label#foobits > span.fd-slider,
+label#foobits2 > span.fd-slider {
+  display: inline-block;
+	margin: 0; }
+label#foobits2 {
+	right: 4em;
+	left: auto;
+	margin: 0; }
+span.fd-slider {
+  width: 9em;
+  height: 1em; }
+
+
+footer {
+	position: relative;
+	height: 100px;
+	background: #FFDEAD url(http://SoftMoon-WebWare.com/images/SoftMoon.footer.back.png) repeat-x bottom; }
+footer p {
+	position: absolute;
+	left: 1.618em;
+	bottom: .618em;
+	font-size: .78em;
+	font-weight: bold; }
+footer .notice {
+	white-space: nowrap;
+	margin-right: 7.618em; }
+.numerance {
+	font-size: .618em;
+	vertical-align: .618em;
+	line-height: 100%; }
+.macronym {
+	display: inline;
+	font-size: .763924em;
+	vertical-align: .236076em;
+	line-height: 100%; }
+acronym.macronym {
+	font-size: .382em;
+	vertical-align: 1.1618em;
+	border-bottom: none; }
+mark {
+	background-color: inherit; }
+</style>
+<!--[if IE]>
+<style type="text/css">
+#top li { display: inline; }
+</style>
+<![endif]-->
+</head>
+<body>
+<header id='top'>
+<h1>Custom Web Software Development for the 21<mark class='numerance'>st</mark> Century<acronym class='macronym' title="service mark">SM</acronym></h1>
+<figure>
+<img id='logo' src="http://SoftMoon-WebWare.com/images/SoftMoon.gif" alt="SoftMoon WebWare" />
+<figcaption><acronym>PHP</acronym>, <acronym>SQL</acronym>s, JavaScript<mark class='macronym'>™</mark>, <acronym>Ajax</acronym>, <acronym>HTML5</acronym>, <acronym>XHTML</acronym>, &amp; <acronym>CSS3</acronym>:
+<span>Innovative Enterprise level Scripting for interactive sites, <acronym title='software as a service'>SaaS</acronym>, &amp; cross-platform desktop apps</span></figcaption>
+</figure>
+<h1>JavaScript<mark class='macronym'>™</mark> powered <code>&lt;input type="range"&gt;</code> solution for older browsers</h1>
+</header>
+
+<div id='content'>
+<p>The “FD-Slider” package, created and developed by Brian McAllister of Frequency-Decoder,
+gives older browsers the ability to use the new <acronym>HTML5</acronym> <code>&lt;input type="range"&gt;</code> tag.&nbsp;
+His fantastic package works well with basic page layouts, but chokes on some more complicated <acronym>CSS</acronym>
+layouts when the slider’s parent containing element(s) are in a “fixed” or “absolute” position.&nbsp;
+The problem seems to be related to the “has layout” bug found in Microsoft’s Internet Exploder, but appears in other
+browsers as well.&nbsp;
+The JavaScript<mark class='macronym'>™</mark> properties <code>offsetWidth</code> and <code>offsetHeight</code> of
+many of the elements within the positioned element are erroneously found to be zero, and the FD-slider script can not
+then function correctly.&nbsp;
+The solution is to use <code>getComputedStyle()</code> when nessesary, but even then the elements must often be given
+distict width/height values in your <acronym>CSS</acronym> file, or a value of <code>auto</code> is returned and we’re
+back where we started.&nbsp;
+In my practice, though, the only element that seems to always (when a parent is positioned as noted above)
+need a defined width is the actual FD-slider element that the script adds to the <acronym>HTML</acronym>.&nbsp;
+Without defining a width in numerical units (px|em|etc.) in your <acronym>CSS</acronym> file,
+the FD-slider displays but will not function when clicked on.&nbsp;
+When the positioned parent is positioned absolutely, that seems to be the only needed work-around.&nbsp;
+When the positioned parent is in a fixed-position, perhaps every parent of the FD-slider up the
+<acronym>DOM</acronym>-heirarchy to the positioned parent will need to have it’s
+dimensions set in the <acronym>CSS</acronym> file using numerical units.&nbsp; You will have to experiment to find out!</p>
+
+<p>I didn’t stop at bug-fixes when I enhanced this project, though.&nbsp;
+Modern browsers allow “transformations” using <acronym>CSS</acronym>, specifically “rotations.”&nbsp;
+The FD-slider package was developed to accommodate vertical sliders as defined by the
+<acronym title='World-Wide-Web Consortium'>W3C</acronym>, but in practice the browsers themselves that
+<strong>do</strong> support <code>&lt;input type="range"&gt;</code> natively do <strong>not</strong> render their
+sliders vertically when they should.&nbsp;
+With a modern browser you can style your slider and rotate it
+(using <code>transform: rotate();</code> in your <acronym>CSS</acronym> file)
+to overcome this defiance and achieve the desired result;&nbsp;
+but when an element is transformed this way, the JavaScript<mark class='macronym'>™</mark> properties
+<code>offsetTop</code> and <code>offsetLeft</code> of the transformed element reflect the values <strong>before</strong>
+the transformation (rotation), which as you should guess, mucks up the ability of the FD-slider script to determine
+where on the slider-bar the end-user is clicking (or dragging the handle to).&nbsp;
+SoftMoon-WebWare’s enhancement allows the slider to be rotated by <strong>any</strong> angle (not simply vertical).</p>
+
+<p>I also found the need to have <strong>all</strong> mouse-events defined for the original input to be triggered
+by the FD-slider;&nbsp; so that functionality has been added to the original script.&nbsp;
+These events are <code>onMouseOver, onMouseMove, onMouseOut, onMouseDown, onMouseUp, onClick</code>.&nbsp;
+Events are now also triggered in both <acronym>DOM</acronym> systems if they exist:
+standard <acronym>DOM2</acronym> and old <acronym>MSIE</acronym>.&nbsp;
+I also modified the “auto-finding” behavior (triggered at startup) to target <strong>only</strong>
+<code>&lt;input type="range"&gt;</code> inputs, avoiding <code>&lt;input type="number"&gt;</code> —
+I find no need for a slider with “number” types — that’s what “range” is for!&nbsp;
+The original script differentiated the two based on whether the input has a <code>step</code> attribute
+and is supposed to target only inputs with steps,
+yet my <code>&lt;input type="number"&gt;</code> would dissapear with no slider in its place.&nbsp;
+I never dug into “why” the bug was occuring, I just side-stepped it altogether.&nbsp;
+Finally, there seemed to be a typo in the <code>pixelsToPercent</code> function; that was corrected, although I never
+saw any problems accociated with it, nor any changes in performance, but perhaps that was hidden from my view.</p>
+
+<p>I have <strong>not</strong> had time to test these changes accross all browsers, and indeed, I expect
+probelms with older browsers like <acronym>MSIE6-7</acronym> when rotating the slider(s).&nbsp;
+You will have to use conditional comments at least to handle the different ways each browser works.&nbsp;
+But as most end-users have generally graduated to <acronym>MSIE7-8</acronym>,
+with more to 9 every-day, the bleak past is fading.&nbsp;
+With Opera<mark class='macronym'>™</mark>, Chrome<mark class='macronym'>™</mark>, &amp; FireFox<mark class='macronym'>™</mark>
+it seems more people stay updated to current versions which allow rotations and, except FireFox<mark class='macronym'>™</mark>,
+native <code>&lt;input type="range"&gt;</code>.&nbsp;
+However, rotations <strong>are</strong> possible in versions of <acronym>MSIE</acronym> &lt; 9 using the
+<acronym>MS</acronym> Matrix Filter, and the smart developer can then use this modified FD-Slider script.&nbsp;
+Older browsers also do not have the <code>getComputedStyle()</code> function.&nbsp;
+You’re <acronym>SOL</acronym> there on complex layouts involving positioned parent elements;&nbsp;
+but this modified version degrades gracefully in those browsers, so no compatability problems or hacks needed
+when using this modified script (unless rotating as noted above).&nbsp;
+As this demo below will show, all browsers except Internet Exploder (wow! it’s the only one working correctly!)
+have trouble locating the mouse while dragging the handle when the mouse is
+directly over the slider bar!&nbsp; Click and hold on the handle to drag it, move the mouse off the bar, and the handle
+will then properly follow the mouse.&nbsp; The browsers return a mouse position of {0,0} when hovering over rotated
+elements and I don’t see any possible way to work that bug out…
+Fortunately, it is only relevant to FireFox<mark class='macronym'>™</mark> in my usage and general terms at this time (2013)
+(since Opera<mark class='macronym'>™</mark> and Chrome<mark class='macronym'>™</mark> have native support for
+<code>&lt;input type="range"&gt;</code> in the latest versions).</p>
+
+<p>Instructions on using the FD-Slider script is best left to its creator; see:
+<a href='http://www.frequency-decoder.com/2010/11/18/unobtrusive-slider-control-html5-input-range-polyfill/' target='aux_page'>frequency-decoder.com</a>.&nbsp;
+If you plan on rotating your sliders, you will need to add additional attributes to the native
+<code>&lt;input /&gt;</code> tag and the rotated element, which may be the input itself or a parent that contains it.&nbsp;
+I know, I know … … … mixing presentation with content; perhaps soon I can rewrite it to work directly with the
+matrix values found using <code>getComputedStyle(transformer).transform</code>.&nbsp;
+Any slider that is rotated (directly or through its parent transformer) closer to vertical than to horizontal
+will recieve an <strong>additional</strong> classname: <code>"fd-slider <strong>fd-slider-upright</strong>"</code>.&nbsp;
+Contrast this with the fact that sliders that are rendered vertical have the classname
+<code>"fd-slider-vertical"</code> <strong>as opposed to</strong> simply <code>"fd-slider"</code>.&nbsp;
+Finally, note that nothing stops you from rendering the sliders as vertical <strong>and</strong> rotating them
+at an angle closer to vertical than horizontal, which will lead to a classname of
+<code>"fd-slider-vertical fd-slider-upright"</code>
+and rotating vertical sliders <em>may</em> not work with the modified script (untested).</p>
+
+<div class='example'>
+<code>
+&#60;style&#62;
+samp:last-child {
+	position: relative;
+	border: 2px solid lightblue;
+	height: 22em;
+	width: 42em; }
+input#loner2,
+label#foobits2 {
+	position: absolute; }
+samp &gt; span.fd-slider,
+input#loner,
+label#foobits,
+input#loner2,
+label#foobits2 {
+	width: 9em;
+	height: 1em;
+	margin: 5em 1em;
+	transform: rotate(61.8deg);
+	-ms-transform: rotate(61.8deg);
+	-webkit-transform: rotate(61.8deg);
+	-moz-transform: rotate(61.8deg); }
+label#foobits,
+label#foobits2 {
+	display: block;
+	margin: 7em 1em 9em 1em; }
+label#foobits &gt; span.fd-slider,
+label#foobits2 &gt; span.fd-slider {
+	display: inline-block;
+	margin: 0; }
+label#foobits2 {
+	right: 4em;
+	left: auto;
+	margin: 0; }
+span.fd-slider {
+	width: 9em;
+	height: 1em; }
+&#60;/style&#62;
+&#60;samp&#62;
+&#60;input id=&#34;loner&#34; type=&#34;range&#34; value=&#34;50&#34; min=&#34;0&#34; max=&#34;100&#34; step=&#34;1&#34; data-fd-slider-transformer=&#34;loner&#34; data-fd-slider-rotate=&#34;61.8&#34; /&#62;
+&#60;label id=&#34;foobits&#34; data-fd-slider-rotate=&#34;61.8&#34;&#62;foobits&#58;&#60;input type=&#34;range&#34; value=&#34;50&#34; min=&#34;0&#34; max=&#34;100&#34; step=&#34;1&#34; data-fd-slider-transformer=&#34;foobits&#34; /&#62;&#60;/label&#62;
+&#60;/samp&#62;
+&#60;samp&#62;
+&#60;input id=&#34;loner2&#34; type=&#34;range&#34; value=&#34;50&#34; min=&#34;0&#34; max=&#34;100&#34; step=&#34;1&#34; data-fd-slider-transformer=&#34;loner2&#34; data-fd-slider-rotate=&#34;61.8&#34; /&#62;
+&#60;label id=&#34;foobits2&#34; data-fd-slider-rotate=&#34;61.8&#34;&#62;foobits&#58;&#60;input type=&#34;range&#34; value=&#34;50&#34; min=&#34;0&#34; max=&#34;100&#34; step=&#34;1&#34; data-fd-slider-transformer=&#34;foobits2&#34; /&#62;&#60;/label&#62;
+&#60;/samp&#62;
+</code>
+<samp>
+<input id="loner" type="range" value="50" min="0" max="100" step="1" data-fd-slider-transformer="loner" data-fd-slider-rotate="61.8" />
+<label id="foobits" data-fd-slider-rotate="61.8">foobits:<input type="range" value="50" min="0" max="100" step="1" data-fd-slider-transformer="foobits" /></label>
+</samp>
+<samp>
+<input id="loner2" type="range" value="50" min="0" max="100" step="1" data-fd-slider-transformer="loner2" data-fd-slider-rotate="61.8" />
+<label id="foobits2" data-fd-slider-rotate="61.8">foobits:<input type="range" value="50" min="0" max="100" step="1" data-fd-slider-transformer="foobits2" /></label>
+</samp>
+</div>
+
+<p>For an example of using this enhanced FD-Slider script with more complex page-layouts, see our
+<a href='http://softmoon-webware.com/MasterColorPicker_instructions.php'>MasterColorPicker</a> project
+for which the slider script was enhanced.</p>
+</div>
+<footer>
+<p>All content found on this page &amp; site Copyright © 2010, 2012, 2013 by SoftMoon WebWare and its owner,
+all rights reserved, unless otherwise specifically noted.&nbsp;
+Trademarks and Service-Marks are property of SoftMoon WebWare and its owner,
+all rights reserved, unless otherwise specifically noted.<br />
+
+<span class='notice'>“JavaScript<mark class='macronym'>™</mark>” is a trademark of Sun Microsystems.</span>
+
+<span class='notice'>“Google<mark class='macronym'>®</mark>” &amp;
+“Chrome<mark class='macronym'>®</mark>” are trademarks of Google, Inc.</span>
+
+<span class='notice'>“Opera<mark class='macronym'>®</mark>” &amp;
+“Opera<mark class='macronym'>®</mark> Mobile<mark class='macronym'>®</mark>” are trademarks of Opera Software ASA.</span>
+
+<span class='notice'>“Mozilla<mark class='macronym'>®</mark>” &amp;
+“Firefox<mark class='macronym'>®</mark>” are trademarks of Mozilla, Inc.</span>
+
+<span class='notice'>“Microsoft<mark class='macronym'>®</mark>” &amp;
+“Internet Explorer<mark class='macronym'>®</mark>” are trademarks of Microsoft, Inc.</span></p>
+</footer>
+</body>
+</html>
